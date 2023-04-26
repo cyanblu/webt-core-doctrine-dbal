@@ -16,6 +16,7 @@
     ],
     "require": {
         "doctrine/dbal": "^3.6",
-        "twig/twig": "^3.5"
+        "twig/twig": "^3.5",
+        "doctrine/orm": "^2.14"
     }
 }
