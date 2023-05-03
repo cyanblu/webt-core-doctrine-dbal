@@ -1,38 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
+{% extends 'base.html.twig' %}
 
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
-</head>
-<body>
-
+{% block body %}
 <h2>RPS Game Tournament on 3rd of Mai, 2023</h2>
 <h3>Players</h3>
-<p>Moritz (M), Gabriel(G)</p>
+<p>Moritz (M),  {{gibbyVar}} </p>
 <table>
-    <tr>
-        <th>Player</th>
+    <tr >
+
+            <th>Player</th>
+
         <th>Symbol</th>
         <th>Date and Time</th>
         <th>Winner</th>
     </tr>
-    <tr>
+    <tr id="rowId">
+        <!-- funktioniert nt!! -->
+        {% for cell in rowId %}
         <td>M<br>G</td>
+        {% endfor %}
         <td>Scissors<br>Scissors</td>
         <td>03.05.2023 - 12:03</td>
         <td>DRAW</td>
@@ -62,6 +47,4 @@
         <td>Moritz</td>
     </tr>
 </table>
-
-</body>
-</html>
+{% endblock %}
