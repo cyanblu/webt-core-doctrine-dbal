@@ -1,11 +1,8 @@
 {
-    "name": "htlw3r/doctrine-dbal",
-    "description": "doctine",
-    "type": "project",
-    "license": "gpl",
+    "name": "morit/webt-core-doctrine-dbal",
     "autoload": {
         "psr-4": {
-            "Htlw3r\\DoctrineDbal\\": "src/"
+            "Morit\\WebtCoreDoctrineDbal\\": "src/"
         }
     },
     "authors": [
@@ -14,11 +11,5 @@
             "email": "9186@htl.rennweg.at"
         }
     ],
-    "require": {
-        "doctrine/dbal": "^3.6",
-        "twig/twig": "^3.5",
-        "doctrine/orm": "^2.14",
-        "symfony/yaml": "^6.2",
-        "symfony/cache": "^6.2"
-    }
+    "require": {}
 }
