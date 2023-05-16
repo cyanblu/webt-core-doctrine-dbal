@@ -1,3 +1,20 @@
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
 <?php
 
 
@@ -15,28 +32,70 @@ $connectionParams = [
 ];
 $conn = DriverManager::getConnection($connectionParams);
 $queryBuilderGame = $conn->createQueryBuilder();
-$queryBuilderPlayer = $conn->createQueryBuilder();
+$queryBuilderSymbol = $conn->createQueryBuilder();
 
 $queryBuilderGame
     ->select('datum', 'fk_player1', 'fk_player2')
     ->from('game');
 
-$queryBuilderPlayer
-    ->select('name', 'symbolPlayed')
+$queryBuilderSymbol
+    ->select('symbolPlayed')
     ->from('player');
 
-$player = $queryBuilderPlayer->fetchAllAssociative();
+$symbols = $queryBuilderSymbol->fetchAllAssociative();
 $game = $queryBuilderGame->fetchAllAssociative();
 
-foreach ($player as $playerTable) {
-    foreach($game as $gameTable){
-        echo '<table>';
-        echo '<tr>';
-        echo $gameTable['fk_player1'];
-        echo '</tr>';
-        echo '<tr>';
-        echo $playerTable['name'];
-        echo '</tr>';
-        echo '</table>';
+
+echo '<h2>RPS Game Tournament on 3rd of Mai, 2023</h2>';
+echo '<table>';
+echo '<tr>
+    <th>Player 1</th>
+    <th>Symbol 1</th>
+    <th>Player 2</th>
+    <th>Symbol 2</th>
+    <th>Date and Time</th>
+    <th>Winner</th>
+  </tr>';
+foreach ($game as $gameTable) {
+    echo '<tr>';
+    echo '<td><input type="submit" name="button1"
+                 value="deleteRow" /></td>';
+    echo '<td>' . $gameTable['fk_player1'] . '</td>';
+    echo '<td>' . $gameTable['fk_player2'] . '</td>';
+    echo '<td>' . $gameTable['datum'] . '</td>';
+    echo '<td>' . gameResult($symbols[$gameTable['fk_player1'] - 1]['symbolPlayed'], $symbols[$gameTable['fk_player2'] - 1]['symbolPlayed'],
+            $symbols[$gameTable['fk_player1'] - 1]['name'], $player[$gameTable['fk_player2'] - 1]['name']) . '</td>';
+    echo '</tr>';
+}
+echo '</table>';
+echO'<br><br>
+<h1>Insert new records in Database</h1>
+    <h4>You may only need the first 2 letters of players and symbols</h4>
+    <form action="create_del_DB.php" method="post">
+        <label for="date">Date:</label>
+        <input type="datetime-local" id="date" name="date"><br><br>
+
+        <label for="player1">Name Player 1:</label>
+        <input type="text" id="player1" name="player1"><br><br>
+
+        <label for="symbol1">Symbol played by Player 1:</label>
+        <input type="text" id="symbol1" name="symbol1"><br><br>
+
+        <label for="player2">Name Player 2:</label>
+        <input type="text" id="player2" name="player2"><br><br>
+
+        <label for="symbol2">Symbol played by Player 2:</label>
+        <input type="text" id="symbol2" name="symbol2"><br><br>
+
+        <input type="submit" value="Add">
+    </form>';
+function gameResult($symbol1, $symbol2, $name1, $name2)
+{
+    if ($symbol1 == $symbol2) {
+        return 'Draw';
+    } elseif (($symbol1 == "Schere" && $symbol2 == "Papier") || ($symbol1 == "Stein" && $symbol2 == "Schere") || ($symbol1 == "Papier" && $symbol2 == "Stein")) {
+        return $name1;
+    } else {
+        return $name2;
     }
 }
