@@ -98,10 +98,10 @@ function gameResult($symbol1, $symbol2, $name1, $name2)
 {
     if ($symbol1 == $symbol2) {
         return 'Draw';
-    } elseif (($symbol1 == "Schere" && $symbol2 == "Papier") || ($symbol1 == "Stein" && $symbol2 == "Schere") || ($symbol1 == "Papier" && $symbol2 == "Stein")) {
-        return $name2;
-    } else {
+    } elseif (($symbol1 == "sc" && $symbol2 == "pa") || ($symbol1 == "ro" && $symbol2 == "sc") || ($symbol1 == "pa" && $symbol2 == "ro")) {
         return $name1;
+    } else {
+        return $name2;
     }
 }
 
