@@ -3,23 +3,25 @@
 {% block body %}
 <h2>RPS Game Tournament on 3rd of Mai, 2023</h2>
 <h3>Players</h3>
-<p>Moritz (M),  {{gibbyVar}} </p>
+<p>Moritzzzz (M),  {{gibbyVar}} </p>
 <table>
-    <tr>
-        <th>Player</th>
+    <tr >
+
+            <th>Player</th>
+
         <th>Symbol</th>
         <th>Date and Time</th>
         <th>Winner</th>
     </tr>
-    {% for runde in runden %}
-        <tr>
-            <td>{{runde.spieler1}}<br>{{runde.spieler2}}</td>
-            <td>{{runde.zeichen1}}<br>{{runde.zeichen2}}</td>
-            <td>{{runde.datum}}</td>
-            <td>{{runde.gewinner}}</td>
-        </tr>
-    {% endfor %}
-
+    <tr id="rowId">
+        <!-- funktioniert nt!! -->
+        {% for cell in rowId %}
+        <td>M<br>G</td>
+        {% endfor %}
+        <td>Scissors<br>Scissors</td>
+        <td>03.05.2023 - 12:03</td>
+        <td>DRAW</td>
+    </tr>
     <tr>
         <td>M<br>G</td>
         <td>Scissors<br>Paper</td>
