@@ -11,7 +11,7 @@ create table if not exists symbol
 create table if not exists game
 (
     pk_gameID  int auto_increment primary key,
-    datum      timestamp,
+    date      timestamp,
     player1    varchar(255),
     player2    varchar(255),
     fk_symbol1 int,
@@ -25,7 +25,7 @@ values ('ro'),
        ('pa'),
        ('sc');
 
-insert into game(datum, player1, player2, fk_symbol1, fk_symbol2)
+insert into game(date, player1, player2, fk_symbol1, fk_symbol2)
 values ('2021-7-25 12:00:00', 'Moritz', 'Chrisi', 1, 2),
        ('2021-3-31 12:00:00', 'Cyp', 'Gabriel', 3, 1),
        ('2023-2-12 12:00:00', 'Nico', 'Hansi', 2, 2),
